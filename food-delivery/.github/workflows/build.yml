@@ -1,4 +1,4 @@
-- name: set up java
+- name: set up java 17
   uses: actions/setup-java@v3
   with:
     java-version: '17'
