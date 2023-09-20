@@ -7,14 +7,11 @@ import lombok.Data;
 @Data
 public class ProductPrice {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_price_id")
     private Long id;
-
-    @OneToOne
-    @JoinColumn(name = "product_id")
-    private Product product;
-
+    @Column(name = "price")
     private double price;
+    @Column(name = "for_quantity")
     private boolean forQuantity;
 }

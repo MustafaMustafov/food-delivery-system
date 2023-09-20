@@ -1,0 +1,12 @@
+# to start container: docker compose -f compose.yaml up -d
+
+
+services:
+  postgres:
+    image: 'postgres:13.3'
+    environment:
+      - 'POSTGRES_DB=food-delivery-db'
+      - 'POSTGRES_PASSWORD=secret'
+      - 'POSTGRES_USER=myuser'
+    ports:
+      - '5432:5432'

@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class Retailer {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "retailer_id")
     private Long id;
 
@@ -27,7 +27,4 @@ public class Retailer {
 
     private String uniqueNumber;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "order_id")
-    private Orders orders;
 }

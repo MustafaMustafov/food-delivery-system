@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class ProductInventory {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_inventory_id")
     private Long id;
 

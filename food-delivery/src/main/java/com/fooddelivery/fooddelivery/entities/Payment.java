@@ -8,9 +8,10 @@ import lombok.Data;
 @Data
 public class Payment {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "payment_id")
     private Long id;
     private String paymentType;
+    @Enumerated(EnumType.STRING)
     private PaymentStatus paymentStatus;
 }

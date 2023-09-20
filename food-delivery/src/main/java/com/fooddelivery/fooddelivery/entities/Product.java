@@ -25,9 +25,5 @@ public class Product {
     @JoinColumn(name = "retailer_id")
     private Retailer retailer;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_inventory_id")
-    private ProductInventory productInventory;
-
     private String SKU;
 }
