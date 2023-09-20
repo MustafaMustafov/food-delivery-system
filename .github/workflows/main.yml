@@ -1,7 +1,9 @@
- name: SonarQube Quality Gate Check
-  # You may pin to the exact commit or the version.
-  # uses: SonarSource/sonarqube-quality-gate-action@d304d050d930b02a896b0f85935344f023928496
-  uses: SonarSource/sonarqube-quality-gate-action@v1.1.0
+- name: set up java 17
+  uses: actions/setup-java@v3
   with:
-    # Location of the scanner metadata report file
-    scanMetadataReportFile: # optional, default is .scannerwork/report-task.txt
+    java-version: '17'
+    distribution: 'postgresql'
+    cache: maven
+
+- name: mvn clean install
+  run: mvn clean install
