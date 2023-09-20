@@ -1,4 +1,4 @@
-package com.fooddelivery.fooddelivery.Enums;
+package com.fooddelivery.fooddelivery.enums;
 
 public enum OrderStatus {
     READY_TO_DELIVER,

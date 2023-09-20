@@ -1,6 +1,6 @@
 package com.fooddelivery.fooddelivery.entities;
 
-import com.fooddelivery.fooddelivery.Enums.PaymentStatus;
+import com.fooddelivery.fooddelivery.enums.PaymentStatus;
 import jakarta.persistence.*;
 import lombok.Data;
 
