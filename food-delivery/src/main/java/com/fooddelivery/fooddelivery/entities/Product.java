@@ -8,25 +8,25 @@ import lombok.Data;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "PRODUCT_ID")
+    @Column(name = "product_id")
     private Long id;
     private String productName;
     private String productDescription;
 
-    @OneToOne
-    @JoinColumn(name = "PRODUCT_PRICE_ID")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_price_id")
     private ProductPrice price;
 
-    @OneToOne
-    @JoinColumn(name = "FOOD_CATEGORY_ID")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "food_category_id")
     private FoodCategory foodCategory;
 
-    @OneToOne
-    @JoinColumn(name = "RETAILER_ID")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "retailer_id")
     private Retailer retailer;
 
-    @OneToOne
-    @JoinColumn(name = "PRODUCT_INVENTORY_ID")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_inventory_id")
     private ProductInventory productInventory;
 
     private String SKU;

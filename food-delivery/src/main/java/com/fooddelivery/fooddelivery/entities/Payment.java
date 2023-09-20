@@ -9,7 +9,7 @@ import lombok.Data;
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "PAYMENT_ID")
+    @Column(name = "payment_id")
     private Long id;
     private String paymentType;
     private PaymentStatus paymentStatus;

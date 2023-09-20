@@ -8,7 +8,7 @@ import lombok.Data;
 public class FoodCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "FOOD_CATEGORY_ID")
+    @Column(name = "food_category_id")
     private Long id;
     private String category;
     private String description;

@@ -9,19 +9,13 @@ import lombok.Data;
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "CLIENT_ID")
+    @Column(name = "client_id")
     private Long id;
     private String clientName;
     private String clientFamilyName;
     private String email;
 
-    @OneToOne
-    @PrimaryKeyJoinColumn
-    @JoinColumn(name = "USER_ID")
-    private User user;
-
-    @OneToOne
-    @PrimaryKeyJoinColumn
-    @JoinColumn(name = "ADDRESS_ID")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
     private Address address;
 }

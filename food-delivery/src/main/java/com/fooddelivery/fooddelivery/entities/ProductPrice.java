@@ -8,11 +8,11 @@ import lombok.Data;
 public class ProductPrice {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "PRODUCT_PRICE_ID")
+    @Column(name = "product_price_id")
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "PRODUCT_ID")
+    @JoinColumn(name = "product_id")
     private Product product;
 
     private double price;

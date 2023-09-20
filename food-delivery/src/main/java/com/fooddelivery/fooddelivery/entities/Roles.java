@@ -2,14 +2,13 @@ package com.fooddelivery.fooddelivery.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
 
 @Entity
 @Data
-public class CompanyType {
+public class Roles {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "company_type_id")
+    @Column(name = "role_id")
     private Long id;
-    private String companyType;
+    private String role;
 }

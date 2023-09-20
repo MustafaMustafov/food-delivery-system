@@ -8,11 +8,11 @@ import lombok.Data;
 public class ProductInventory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "PRODUCT_INVENTORY_ID")
+    @Column(name = "product_inventory_id")
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "PRODUCT_ID")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "product_id")
     private Product product;
 
     private int quantity;

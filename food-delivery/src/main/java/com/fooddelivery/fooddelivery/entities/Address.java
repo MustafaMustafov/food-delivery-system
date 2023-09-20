@@ -8,6 +8,7 @@ import lombok.Data;
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "address_id")
     private Long id;
     private String street;
     private String number;
@@ -16,9 +17,4 @@ public class Address {
     private String country;
     private String telephone;
     private String mobile;
-
-    @OneToOne
-    @PrimaryKeyJoinColumn
-    @JoinColumn(name = "CLIENT_ID")
-    private Client client;
 }

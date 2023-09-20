@@ -8,7 +8,7 @@ import lombok.Data;
 public class Retailer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "RETAILER_ID")
+    @Column(name = "retailer_id")
     private Long id;
 
     private String retailerName;
@@ -17,17 +17,17 @@ public class Retailer {
 
     private String telephoneNumber;
 
-    @OneToOne
-    @PrimaryKeyJoinColumn
-    @JoinColumn(name = "USER_ID")
-    private User user;
-
-    @OneToOne
-    @JoinColumn(name = "COMPANY_TYPE_ID")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "company_type_id")
     private CompanyType companyType;
-    @OneToOne
-    @PrimaryKeyJoinColumn
-    @JoinColumn(name = "ADDRESS_ID")
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id")
     private Address address;
+
     private String uniqueNumber;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "order_id")
+    private Orders orders;
 }
