@@ -1,0 +1,115 @@
+-- create address table
+CREATE TABLE address (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    street VARCHAR(255),
+    number VARCHAR(10),
+    city VARCHAR(255),
+    postal_code VARCHAR(10),
+    country VARCHAR(255),
+    telephone VARCHAR(20),
+    mobile VARCHAR(20),
+    CLIENT_ID BIGINT,
+    FOREIGN KEY (CLIENT_ID) REFERENCES client (id)
+);
+-- create client table
+CREATE TABLE client (
+    CLIENT_ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    clientName VARCHAR(255),
+    clientFamilyName VARCHAR(255),
+    email VARCHAR(255),
+    USER_ID BIGINT,
+    ADDRESS_ID BIGINT,
+    FOREIGN KEY (USER_ID) REFERENCES user (id),
+    FOREIGN KEY (ADDRESS_ID) REFERENCES address (id)
+);
+-- create company_type table
+CREATE TABLE company_type (
+    COMPANY_TYPE_ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    companyType VARCHAR(255)
+);
+-- create food_category table
+CREATE TABLE food_category (
+    FOOD_CATEGORY_ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    category VARCHAR(255),
+    description VARCHAR(255)
+);
+-- create order table
+CREATE TABLE orders (
+    ORDER_ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    CLIENT_ID BIGINT,
+    RETAILER_ID BIGINT,
+    ADDRESS_ID BIGINT,
+    TOTAL_PRICE DOUBLE,
+    PAYMENT_ID BIGINT,
+    STATUS VARCHAR(255),
+    FOREIGN KEY (CLIENT_ID) REFERENCES client (CLIENT_ID),
+    FOREIGN KEY (RETAILER_ID) REFERENCES retailer (RETAILER_ID),
+    FOREIGN KEY (ADDRESS_ID) REFERENCES address (id),
+    FOREIGN KEY (PAYMENT_ID) REFERENCES payment (PAYMENT_ID)
+);
+-- create payment table
+CREATE TABLE payment (
+    PAYMENT_ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    paymentType VARCHAR(255),
+    paymentStatus VARCHAR(255)
+);
+-- create product table
+CREATE TABLE product (
+    PRODUCT_ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    product_name VARCHAR(255),
+    product_description VARCHAR(255),
+    PRODUCT_PRICE_ID BIGINT,
+    FOOD_CATEGORY_ID BIGINT,
+    RETAILER_ID BIGINT,
+    PRODUCT_INVENTORY_ID BIGINT,
+    SKU VARCHAR(50),
+    FOREIGN KEY (PRODUCT_PRICE_ID) REFERENCES product_price (PRODUCT_PRICE_ID),
+    FOREIGN KEY (FOOD_CATEGORY_ID) REFERENCES food_category (FOOD_CATEGORY_ID),
+    FOREIGN KEY (RETAILER_ID) REFERENCES retailer (RETAILER_ID),
+    FOREIGN KEY (PRODUCT_INVENTORY_ID) REFERENCES product_inventory (PRODUCT_INVENTORY_ID)
+);
+-- create product_inventory table
+CREATE TABLE product_inventory (
+    PRODUCT_INVENTORY_ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    PRODUCT_ID BIGINT,
+    quantity INT,
+    FOREIGN KEY (PRODUCT_ID) REFERENCES product (PRODUCT_ID)
+);
+-- create product_price table
+CREATE TABLE product_price (
+    PRODUCT_PRICE_ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    PRODUCT_ID BIGINT,
+    price DOUBLE,
+    for_quantity BOOLEAN,
+    FOREIGN KEY (PRODUCT_ID) REFERENCES product (PRODUCT_ID)
+);
+-- create retailer table
+CREATE TABLE retailer (
+    RETAILER_ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    retailer_name VARCHAR(255),
+    retailer_email VARCHAR(255),
+    telephone_number VARCHAR(20),
+    USER_ID BIGINT,
+    COMPANY_TYPE_ID BIGINT,
+    ADDRESS_ID BIGINT,
+    unique_number VARCHAR(50),
+    FOREIGN KEY (USER_ID) REFERENCES user (USER_ID),
+    FOREIGN KEY (COMPANY_TYPE_ID) REFERENCES company_type (COMPANY_TYPE_ID),
+    FOREIGN KEY (ADDRESS_ID) REFERENCES address (ADDRESS_ID)
+);
+-- create role table
+CREATE TABLE role (
+    ROLE_ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    role VARCHAR(255)
+);
+-- create user table
+CREATE TABLE user (
+    USER_ID BIGINT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255),
+    password VARCHAR(255),
+    ROLE_ID BIGINT,
+    FOREIGN KEY (ROLE_ID) REFERENCES role (ROLE_ID)
+);
+
+
+
