@@ -1,9 +1,0 @@
-- name: set up java 17
-  uses: actions/setup-java@v3
-  with:
-    java-version: '17'
-    distribution: 'postgresql'
-    cache: maven
-
-- name: mvn clean install
-  run: mvn clean install
