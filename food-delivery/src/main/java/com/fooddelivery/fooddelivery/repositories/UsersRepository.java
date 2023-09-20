@@ -1,9 +1,9 @@
 package com.fooddelivery.fooddelivery.repositories;
 
-import jakarta.persistence.Id;
+import com.fooddelivery.fooddelivery.entities.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<Long, Id> {
+public interface UsersRepository extends JpaRepository<Users, Long> {
 }
