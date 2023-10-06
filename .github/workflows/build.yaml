@@ -1,16 +1,23 @@
 name: build
 on: [push]
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
-      - name: set up java
+
+      - name: Set up Java
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'oracle'
           cache: maven
-      - name: mvn clean install
-        run: mvn clean install
+
+      - name: Cache Maven packages
+        uses: actions/cache@v3
+        with:
+            path: ~/.m2
+            key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+            restore-keys: ${{ runner.os }}-m2
