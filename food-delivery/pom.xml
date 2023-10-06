@@ -15,6 +15,8 @@
 	<description>Food order and delivery platform</description>
 	<properties>
 		<java.version>17</java.version>
+		<sonar.organisation>mustafamustafov</sonar.organisation>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 	<dependencies>
 		<dependency>
